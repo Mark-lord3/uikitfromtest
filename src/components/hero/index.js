@@ -1,0 +1,12 @@
+export { default as HeroContainer } from "./hero-container/hero-container";
+export { default as HeroTabpanels } from "./hero-tabpanels/hero-tabpanels";
+export { default as HeroTabpanel } from "./hero-tabpanel/hero-tabpanel";
+export { default as TourTabpanel } from "./hero-tabpanel/tour-tabpanel/tour-tabpanel";
+export { default as InfoTabpanel } from "./hero-tabpanel/info-tabpanel/info-tabpanel";
+export { default as HeroInfoItem } from "./hero-tabpanel/info-tabpanel/hero-info-item/hero-info-item";
+export { default as GalleryTabpanel } from "./hero-tabpanel/gallery-tabpanel/gallery-tabpanel";
+export { default as GalleryItem } from "./hero-tabpanel/gallery-tabpanel/GalleryItem/GalleryItem";
+export { default as FloorplanTabpanel } from "./hero-tabpanel/floorplan-tabpanel/floorplan-tabpanel";
+export { default as HeroTablist } from "./hero-tablist/hero-tablist";
+export { default as HeroTab } from "./hero-tab/hero-tab";
+export { default as TrustpilotQuote } from "./trustpilot-quote/TrustpilotQuote";

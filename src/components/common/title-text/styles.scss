@@ -1,0 +1,42 @@
+@import '../../../styles/variables.scss';
+
+.rui-primary-title {
+  font-family: 'ABC Gravity', sans-serif;
+
+  font-size: 58px;
+  line-height: 75.08px;
+  font-weight: 900;
+  margin-bottom: 15px;
+
+  &.second {
+    padding-top: 0;
+  }
+  &.color-1 {
+    color: $text-color-1;
+  }
+  &.color-2 {
+    color: $text-color-2;
+  }
+  &.color-3 {
+    color: $text-color-3;
+  }
+  &.color-4 {
+    color: $text-color-4;
+  }
+  &.color-5 {
+    color: $text-color-5;
+  }
+  &.centered {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 44px;
+    line-height: 56.96px;
+    font-weight: 900;
+  }
+  @media screen and (max-width: 560px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

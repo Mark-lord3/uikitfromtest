@@ -1,0 +1,205 @@
+@import "../../styles/mixins.scss";
+
+.rui-charity-block {
+  padding: 60px 0;
+  .rui-primary-title {
+    padding: 0 40px;
+    text-transform: initial;
+  }
+  @include tablet-portrait {
+    padding: 56px 20px;
+  }
+  @include phone {
+    padding: 24px 20px;
+  }
+
+  .sub {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1;
+    @media screen and (max-width: 650px) {
+      font-size: 16px;
+    }
+  }
+
+  .rui-charities-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &.rui-charities-content_single {
+      max-width: 704px;
+      margin: 40px auto 0;
+      column-gap: 28px;
+      .charities-content__logo {
+        display: none;
+      }
+    }
+    &.rui-charities-content_list {
+      margin-top: 80px;
+
+      @include media-lg {
+        margin-top: 40px;
+      }
+    }
+
+    .rui-left-side {
+      width: 356px;
+
+      @include media-lg {
+        width: 100%;
+        max-width: 356px;
+      }
+      p.rui-title {
+        // color: #043b3b;
+        color: #2e2e2e;
+
+        font-family: "ABC Gravity", sans-serif;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        letter-spacing: 0.72px;
+        span {
+          color: #e2bcc0;
+          font-family: "ABC Gravity";
+          font-size: 36px;
+          font-style: normal;
+          font-weight: 900;
+          line-height: normal;
+          letter-spacing: 0.72px;
+        }
+      }
+      p.rui-sub {
+        margin-top: 12px;
+        // color: #043b3b;
+        color: #2e2e2e;
+        font-family: "Nunito Sans";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.4px;
+        // text-transform: uppercase;
+        span {
+          font-weight: 900;
+        }
+      }
+      @include media-lg {
+        p.rui-title {
+          text-align: center;
+          font-size: 36px;
+          font-style: normal;
+          font-weight: 900;
+          line-height: normal;
+          letter-spacing: 0.72px;
+          span {
+            text-align: center;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+            letter-spacing: 0.72px;
+          }
+        }
+        p.rui-sub {
+          text-align: center;
+        }
+      }
+      @include phone {
+        p.rui-title {
+          font-size: 16px;
+          line-height: 20px;
+          letter-spacing: 0.02em;
+          span {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.02em;
+          }
+        }
+        p.rui-sub {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+      margin-bottom: 28px;
+
+      .charities-content__logo {
+        margin: 20px auto 0px;
+        width: 230px;
+        display: block;
+        img {
+          width: 100%;
+        }
+
+        @media screen and (max-width: 650px) {
+          display: none;
+        }
+      }
+    }
+    .rui-right-image {
+      display: flex;
+      // flex-direction: column;
+      flex-direction: row-reverse;
+      gap: 45px;
+      justify-content: center;
+      align-items: center;
+      @include media-lg {
+        // flex-direction: row;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      img,
+      a {
+        width: 320px;
+        object-fit: contain;
+
+        @include media-lg {
+          width: auto;
+          max-width: 250px;
+        }
+        @include tablet-portrait {
+          max-height: 180px;
+        }
+        @include phone {
+          width: auto;
+          max-width: 100%;
+          max-height: 160px;
+        }
+      }
+    }
+    .rui-right-list {
+      width: calc(100% - 350px);
+
+      @include media-lg {
+        width: 100%;
+      }
+    }
+
+    @include media-lg {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+.rui-charity-rounded-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+  & > img {
+    margin-left: 0px;
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+    cursor: initial;
+    &.rounded {
+      border-radius: 50%;
+    }
+  }
+}

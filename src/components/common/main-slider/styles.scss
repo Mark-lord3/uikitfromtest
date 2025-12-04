@@ -1,0 +1,77 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
+
+.main-slider {
+  width: 100%;
+}
+.swiper-container {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    opacity: 1;
+    &::after {
+      display: none;
+    }
+  }
+  .swiper-button-prev {
+    left: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg width='7' height='13' viewBox='0 0 7 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.05862 0.878638C6.18164 0.878638 6.30465 0.925144 6.39842 1.01891C6.58594 1.20644 6.58594 1.51023 6.39842 1.69775L1.15742 6.93876L6.39842 12.1805C6.58594 12.368 6.58594 12.6718 6.39842 12.8594C6.21089 13.0469 5.9071 13.0469 5.71957 12.8594L0.13877 7.27855C-0.0487566 7.09103 -0.0487566 6.78723 0.13877 6.59971L5.71957 1.01891C5.81258 0.925144 5.9356 0.878638 6.05862 0.878638Z' fill='white'/%3E%3C/svg%3E%0A");
+
+    @include media-lg {
+      left: 8px;
+    }
+  }
+  .swiper-button-next {
+    right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg width='7' height='13' viewBox='0 0 7 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.941381 12.1214C0.818364 12.1214 0.695346 12.0749 0.601583 11.9811C0.414056 11.7936 0.414056 11.4898 0.601583 11.3022L5.84258 6.06124L0.601583 0.819492C0.414056 0.631965 0.414056 0.328172 0.601583 0.140645C0.78911 -0.0468817 1.0929 -0.0468817 1.28043 0.140645L6.86123 5.72145C7.04876 5.90897 7.04876 6.21277 6.86123 6.40029L1.28043 11.9811C1.18742 12.0749 1.0644 12.1214 0.941381 12.1214Z' fill='white'/%3E%3C/svg%3E%0A");
+
+    @include media-lg {
+      right: 8px;
+    }
+  }
+
+  &.swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 40px;
+
+    @include media-lg {
+      bottom: 10px;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    opacity: 1;
+  }
+
+  &.swiper-theme-dark {
+    .swiper-button-prev,
+    .swiper-button-next {
+      background-color: rgba($black, 0.45);
+    }
+    .swiper-pagination-bullet {
+      border: 1px solid $text-color-5;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $text-color-5;
+    }
+  }
+  &.swiper-theme-light {
+    .swiper-button-prev,
+    .swiper-button-next {
+      background-color: rgba($text-color-1, 0.4);
+    }
+    .swiper-pagination-bullet {
+      border: 1px solid $text-color-1;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $text-color-1;
+    }
+  }
+}

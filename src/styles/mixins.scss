@@ -1,0 +1,42 @@
+//Media mixins
+@mixin desktop {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media screen and (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media screen and (max-width: 560px) {
+    @content;
+  }
+}
+
+@mixin phone-s {
+  @media screen and (max-width: 414px) {
+    @content;
+  }
+}
+
+@mixin phone-xs {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}

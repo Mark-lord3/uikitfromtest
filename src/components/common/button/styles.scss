@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+
+.uikit-button {
+  padding: 20px 28px;
+  border-radius: 50px;
+  font-family: 'ABC Gravity', serif;
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: $text-color-2;
+  background-color: $text-color-4;
+}

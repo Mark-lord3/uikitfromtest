@@ -1,0 +1,166 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.how-it-works {
+  padding: 80px 40px;
+
+  @include media-lg {
+    padding: 60px 20px;
+  }
+
+  .how-it-works__container {
+    position: relative;
+    background-color: $section-bg-1;
+    border-radius: 40px;
+    padding: 80px 40px;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    @include phone {
+      padding: 40px 20px;
+    }
+  }
+
+  .how-it-works__list {
+    position: relative;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    z-index: 2;
+
+    @include media-lg {
+      display: none;
+    }
+  }
+
+  .how-it-works__slider {
+    display: none;
+
+    @include media-lg {
+      display: block;
+    }
+
+    .swiper-container.swiper-container-horizontal > .swiper-pagination-bullets {
+      bottom: 0;
+    }
+  }
+
+  .how-it-works-card {
+    width: 100%;
+    max-width: 364px;
+    padding: 28px 20px 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    @include media-lg {
+      max-width: none;
+    }
+    .how-it-works-card__image {
+      border-radius: 50%;
+      background: $section-bg-2;
+      display: flex;
+      width: 100px;
+      height: 100px;
+      padding: 2.5px 0px;
+      justify-content: center;
+      align-items: center;
+    }
+    .how-it-works-card__title {
+      color: $text-color-5;
+      text-align: center;
+      font-family: "ABC Gravity", sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      letter-spacing: -0.01em;
+
+      @include phone {
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        text-transform: none;
+      }
+    }
+    .how-it-works-card__description {
+      text-align: center;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.2px;
+      color: $text-color-5;
+
+      @include phone {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+      }
+    }
+  }
+
+  .how-it-works__subtitle {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+
+    @include media-lg {
+      display: none;
+    }
+
+    p {
+      text-align: center;
+      font-family: "ABC Gravity";
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      color: $text-color-2;
+    }
+  }
+
+  .how-it-works__footer {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include media-lg {
+      display: none;
+    }
+  }
+
+  .how-it-works__bg-line {
+    z-index: 1;
+    position: absolute;
+    top: 8%;
+    left: 0;
+    width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    @media screen and (max-width: 1600px) {
+      top: 12%;
+    }
+    @media screen and (max-width: 1500px) {
+      top: 14%;
+    }
+    @media screen and (max-width: 1440px) {
+      top: 15%;
+    }
+    @media screen and (max-width: 1310px) {
+      top: 10%;
+    }
+    @media screen and (max-width: 1000px) {
+      top: 12%;
+    }
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
+  }
+}

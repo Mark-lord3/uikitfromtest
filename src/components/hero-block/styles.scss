@@ -1,0 +1,101 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.hero-block {
+  position: relative;
+  width: 100%;
+  height: calc(100dvh - 80px);
+  min-height: 410px;
+  background: $section-bg-1;
+  display: flex;
+  flex: 1 1 0;
+  @include media-lg {
+    min-height: 320px;
+    height: auto;
+  }
+}
+.video-block-container {
+  width: 100%;
+  & > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include media-lg {
+      height: 100vw;
+      min-height: 375px;
+    }
+  }
+  @include media-lg {
+    height: auto;
+  }
+}
+.image-block-container {
+  position: relative;
+  width: 100%;
+  min-height: 768px;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.video-block-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-block-overlay::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+  display: block;
+}
+
+.video-block-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 900px;
+}
+
+.video-buttons-group {
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.video-block-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  row-gap: 28px;
+  padding-bottom: 24px;
+
+  @include media-lg {
+    padding-bottom: 40px;
+  }
+}
+.video-block-buttons__row {
+  display: flex;
+}

@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Configure" />
+
+# Configure your project
+
+Storybook only renders the components that match the glob patterns declared in `.storybook/main.ts`.  
+In this workspace we load:
+
+- `../src/**/*.mdx` for documentation pages
+- `../src/**/*.stories.@(ts|tsx)` for component stories
+
+Keep your stories inside `src/stories` (or a child folder) and make sure the filename ends with `.stories.tsx`.
+
+## Required exports
+
+Every component story must provide a default export with a `title` and `component`.  
+Each variation is a named export created from a template:
+
+```tsx
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as ComponentMeta<typeof Button>;
+
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = { label: 'Button' };
+```
+
+If the default export is missing or the title is empty Storybook hides the file silently.
+
+## MDX docs
+
+Webpack 4 + MDX v1 has limited syntax support. Stick to Markdown, standard JSX and components from `@storybook/addon-docs/blocks`.  
+If a docs page fails to compile, either simplify it or temporarily rename it so you can continue working on your component stories.

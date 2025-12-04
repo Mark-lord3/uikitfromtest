@@ -1,0 +1,1 @@
+export { default as SubtitleText } from './subtitle-text';

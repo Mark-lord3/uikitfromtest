@@ -1,0 +1,75 @@
+{
+  "name": "raffle-house-uikit",
+  "version": "1.0.0",
+  "private": false,
+  "description": "UI Kit for Raffle House",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "rollup": "rollup -c",
+    "sb": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.12.3",
+    "dayjs": "^1.11.10",
+    "react": "16.x",
+    "react-dom": "16.x",
+    "react-fast-marquee": "^1.6.1",
+    "react-zoom-pan-pinch": "^3.5.1",
+    "swiper": "^6.8.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "@babel/preset-typescript": "^7.12.7",
+    "@rollup/plugin-babel": "^5.2.3",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-image": "^2.0.6",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@storybook/addon-actions": "6.5.16",
+    "@storybook/addon-docs": "6.5.16",
+    "@storybook/addon-essentials": "6.5.16",
+    "@storybook/addon-links": "6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/react": "6.5.16",
+    "@mdx-js/react": "^1.6.22",
+    "@types/react": "16.9.56",
+    "css-loader": "5.2.7",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "file-loader": "^6.2.0",
+    "prettier": "2.2.1",
+    "react-docgen-typescript-plugin": "^1.0.6",
+    "rollup": "^2.79.1",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "1.32.13",
+    "sass-loader": "10.1.1",
+    "storybook": "6.5.16",
+    "style-loader": "2.0.0",
+    "typescript": "^4.9.5"
+  },
+  "overrides": {
+    "@storybook/react-docgen-typescript-plugin": {
+      "typescript": "4.9.5"
+    },
+    "react-docgen-typescript": {
+      "typescript": "4.9.5"
+    }
+  }
+}

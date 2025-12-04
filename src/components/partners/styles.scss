@@ -1,0 +1,110 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.partners-block-redesign {
+  padding: 80px 10px 60px 10px;
+  text-align: center;
+  @include phone {
+    padding: 32px 0 0;
+    background-color: $section-bg-1;
+  }
+
+  .rui-primary-title {
+    @include phone {
+      margin-bottom: 0;
+    }
+  }
+
+  &.no-pb {
+    padding-bottom: 0;
+  }
+  .title {
+    font-family: 'ABC Gravity';
+    font-weight: 700;
+    @media (max-width: 768px) {
+      display: block;
+      font-size: 21px;
+      line-height: 24px;
+      &.no-bottom-margin {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .home-divider-row {
+    margin-bottom: 2.3rem;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 80px 10px 60px 10px;
+    & > h3 {
+      padding: 0 10px;
+    }
+    &.no-pb {
+      padding-bottom: 0;
+    }
+    .home-divider-row {
+      margin-bottom: 1.8rem;
+    }
+  }
+  &__content-inner {
+    // border-top: 1px solid #f48202;
+    // padding-bottom: 30px;
+    .slick-list {
+      // background-color: #fff;
+      padding-top: 40px;
+    }
+    .home-divider-row {
+      margin-bottom: 1.8rem;
+    }
+    @media screen and (min-width: 768px) {
+      .home-divider-row {
+        &:before {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+  h2 {
+    @media screen and (max-width: 1024px) {
+      font-size: 36px;
+      line-height: 40px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+    @media screen and (max-width: 560px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}
+
+.partnersSlider {
+  .slick-slide {
+    img {
+      display: block;
+      width: 100%;
+      padding: 0 15px;
+      height: 40px;
+      object-fit: contain;
+      margin: auto;
+    }
+  }
+  .slick-list {
+    padding-top: 25px;
+    background-color: transparent;
+
+    // padding-bottom: 40px;
+  }
+  &.dark {
+    .slick-list {
+      background-color: transparent;
+      // background-color: #fff;
+    }
+  }
+  .slick-dots {
+    margin-top: 30px;
+    // background-color: red;
+  }
+}

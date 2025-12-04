@@ -1,0 +1,33 @@
+.dream-draw-feature {
+  .dream-draw-feature__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0px;
+    }
+  }
+  .dream-draw-feature__icon {
+    flex: 0 0 32px;
+  }
+  .dream-draw-feature__title {
+    font-family: 'ABC Gravity', sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.2;
+  }
+
+  .dream-draw-feature__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+
+    @media (max-width: 500px) {
+      line-height: 1.2;
+    }
+  }
+}
