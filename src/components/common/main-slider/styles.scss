@@ -75,3 +75,32 @@
     }
   }
 }
+/* HIDE ALL SWIPER DEFAULT DOTS */
+.swiper-pagination,
+.swiper-pagination-bullets,
+.swiper-pagination-bullet {
+  display: none !important;
+}
+
+
+/* ⭐ YOUR CUSTOM DOTS */
+.main-slider__dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.main-slider__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &.active {
+    background: #ff6f61;
+  }
+}
