@@ -134,7 +134,7 @@ export default function GallerySlider({ data }) {
 
   const [activeDot, setActiveDot] = useState(0);
 
-  // ⭐ Always store swiper instance here (production-safe)
+
   const [swiperRef, setSwiperRef] = useState(null);
 
   useEffect(() => {
@@ -178,7 +178,7 @@ export default function GallerySlider({ data }) {
 
       <div className="main-slider">
         <Swiper
-          onSwiper={setSwiperRef}   // ⭐ THIS FIXES DOTS IN DEPLOY
+          onSwiper={setSwiperRef}   
           slidesPerView={1}
           speed={700}
           autoplay={{ delay: 5000 }}
