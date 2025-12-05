@@ -164,7 +164,7 @@ export default function GallerySlider({ data }) {
   return (
     <div className="gallery-slider">
       <TitleText isCentered as="h2" variant="primary" color="color-1">
-        Gallery
+        Gallery-Test-Work
       </TitleText>
 
       <div className="main-slider">
