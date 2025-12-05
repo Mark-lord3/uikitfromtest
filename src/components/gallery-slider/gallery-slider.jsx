@@ -115,16 +115,18 @@ SwiperCore.use([Navigation, Pagination]);
 //   );
 // }
 
-
-
 export default function GallerySlider({ data }) {
   const [slideInfo, setSlideInfo] = useState({
     title: "",
     text: "",
   });
 
-  // DOT STATE (0,1,2)
+  // === FULLY CUSTOM DOT STATE ===
   const [activeDot, setActiveDot] = useState(0);
+  const dots = [0, 1, 2];
+
+  // Track previous real slide index to detect direction
+  const [lastRealIndex, setLastRealIndex] = useState(0);
 
   useEffect(() => {
     if (data?.length) {
@@ -135,25 +137,44 @@ export default function GallerySlider({ data }) {
     }
   }, [data]);
 
-  // ---------------- DOT CLICK (FINAL FIXED VERSION) ----------------
+  // -------- DOT CLICK HANDLER --------
   function goToDot(dotIndex, swiper) {
-    const realSlide = dotIndex; // direct mapping
+    const total = data.length;
 
-    setActiveDot(dotIndex);
+    // Calculate direction by comparing desired and current dot
+    let direction = null;
+
+    if (dotIndex === (activeDot + 1) % 3) {
+      direction = "forward";
+    } else if (dotIndex === (activeDot - 1 + 3) % 3) {
+      direction = "backward";
+    }
+
+    // Update dots according to direction
+    if (direction === "forward") {
+      setActiveDot((prev) => (prev + 1) % 3);
+    } else if (direction === "backward") {
+      setActiveDot((prev) => (prev - 1 + 3) % 3);
+    }
+
+    // Move Swiper
+    const diff = dotIndex - activeDot;
+    const realSlide = (((lastRealIndex + diff) % total) + total) % total;
+
     swiper.slideToLoop(realSlide);
   }
 
-  // -------- IMAGES --------
+  // -------- IMAGE CARDS --------
   const images = data.map((item) => (
-    <div className="gallery-images" role="presentation" key={item._id}>
-      <div className="gallery-image">
+    <div className='gallery-images' role='presentation' key={item._id}>
+      <div className='gallery-image'>
         <img
           srcSet={`
             ${item.image800Url} 800w,
             ${item.image1600Url} 1600w,
             ${item.image3840Url} 3840w
           `}
-          sizes="(max-width: 800px) 800px, (max-width: 1600px) 1600px, 3840px"
+          sizes='(max-width: 800px) 800px, (max-width: 1600px) 1600px, 3840px'
           src={item.image1600Url}
           alt={item.title}
         />
@@ -162,12 +183,12 @@ export default function GallerySlider({ data }) {
   ));
 
   return (
-    <div className="gallery-slider">
-      <TitleText isCentered as="h2" variant="primary" color="color-1">
-        Gallery-Test-Work
+    <div className='gallery-slider'>
+      <TitleText isCentered as='h2' variant='primary' color='color-1'>
+        Gallery
       </TitleText>
 
-      <div className="main-slider">
+      <div className='main-slider'>
         <Swiper
           slidesPerView={1}
           speed={700}
@@ -175,14 +196,34 @@ export default function GallerySlider({ data }) {
           loop
           navigation
           pagination={false}
-          className="swiper-theme-light"
+          className='swiper-theme-light'
           onSlideChange={(swiper) => {
             const real = swiper.realIndex;
+            const total = data.length;
+            const last = total - 1;
 
-            // ---------------- DOT SYNC ----------------
-            setActiveDot(real % 3);
+            let direction = null;
 
-            // ---------------- INFO UPDATE ----------------
+            // FORWARD (including loop last→first)
+            if (real === (lastRealIndex + 1) % total) {
+              direction = "forward";
+            }
+            // BACKWARD (including loop first→last)
+            else if (real === (lastRealIndex - 1 + total) % total) {
+              direction = "backward";
+            }
+
+            // Update dot based on detected direction
+            if (direction === "forward") {
+              setActiveDot((prev) => (prev + 1) % 3);
+            } else if (direction === "backward") {
+              setActiveDot((prev) => (prev - 1 + 3) % 3);
+            }
+
+            // Save new index
+            setLastRealIndex(real);
+
+            // Update slide info
             const slide = data[real];
             if (slide) {
               setSlideInfo({
@@ -201,23 +242,19 @@ export default function GallerySlider({ data }) {
           ))}
         </Swiper>
 
-        {/* INFO */}
-        <div className="gallery-slider__info" id="gallery-info">
+        {/* INFO BLOCK */}
+        <div className='gallery-slider__info' id='gallery-info'>
           <h3>{slideInfo.title}</h3>
           <p>{slideInfo.text}</p>
 
-          {/* ---------------- DOTS ---------------- */}
-          <div className="gallery-slider__dots">
-            {[0, 1, 2].map((dotIndex) => (
+          {/* === CUSTOM DOTS === */}
+          <div className='gallery-slider__dots'>
+            {dots.map((dotIndex) => (
               <button
                 key={dotIndex}
-                className={
-                  "gallery-slider__dot" +
-                  (dotIndex === activeDot ? " active" : "")
-                }
+                className={"gallery-slider__dot" + (dotIndex === activeDot ? " active" : "")}
                 onClick={() => {
-                  const swiper =
-                    document.querySelector(".swiper-theme-light").swiper;
+                  const swiper = document.querySelector(".swiper-theme-light").swiper;
                   goToDot(dotIndex, swiper);
                 }}
               />
@@ -228,4 +265,3 @@ export default function GallerySlider({ data }) {
     </div>
   );
 }
-
