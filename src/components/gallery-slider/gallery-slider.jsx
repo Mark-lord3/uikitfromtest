@@ -173,7 +173,7 @@ export default function GallerySlider({ data }) {
   return (
     <div className="gallery-slider">
       <TitleText isCentered as="h2" variant="primary" color="color-1">
-        Gallery-Test_ToCheck
+        Gallery
       </TitleText>
 
       <div className="main-slider">
