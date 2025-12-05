@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import TitleText from "../common/title-text/title-text";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
-import SwiperCore from "swiper";
-import "./styles.scss";
+// import React, { useState, useEffect } from "react";
+// import TitleText from "../common/title-text/title-text";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Pagination } from "swiper";
+// import SwiperCore from "swiper";
+// import "./styles.scss";
 
-SwiperCore.use([Navigation, Pagination]);
+// SwiperCore.use([Navigation, Pagination]);
 
 // export default function GallerySlider({ data }) {
 //   // const slides = data.map(({ title, text, imageName }, i) => (
@@ -117,14 +117,25 @@ SwiperCore.use([Navigation, Pagination]);
 
 
 
+import React, { useState, useEffect } from "react";
+import TitleText from "../common/title-text/title-text";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
+import SwiperCore from "swiper";
+import "./styles.scss";
+
+SwiperCore.use([Navigation, Pagination]);
+
 export default function GallerySlider({ data }) {
   const [slideInfo, setSlideInfo] = useState({
     title: "",
     text: "",
   });
 
-  // DOT STATE (0,1,2)
   const [activeDot, setActiveDot] = useState(0);
+
+  // ⭐ Always store swiper instance here (production-safe)
+  const [swiperRef, setSwiperRef] = useState(null);
 
   useEffect(() => {
     if (data?.length) {
@@ -135,15 +146,13 @@ export default function GallerySlider({ data }) {
     }
   }, [data]);
 
-  // ---------------- DOT CLICK (FINAL FIXED VERSION) ----------------
+  // ---------------- DOT CLICK ----------------
   function goToDot(dotIndex, swiper) {
-    const realSlide = dotIndex; // direct mapping
-
+    if (!swiper) return;
     setActiveDot(dotIndex);
-    swiper.slideToLoop(realSlide);
+    swiper.slideToLoop(dotIndex);
   }
 
-  // -------- IMAGES --------
   const images = data.map((item) => (
     <div className="gallery-images" role="presentation" key={item._id}>
       <div className="gallery-image">
@@ -164,11 +173,12 @@ export default function GallerySlider({ data }) {
   return (
     <div className="gallery-slider">
       <TitleText isCentered as="h2" variant="primary" color="color-1">
-        Gallery
+        Gallery-Test_ToCheck
       </TitleText>
 
       <div className="main-slider">
         <Swiper
+          onSwiper={setSwiperRef}   // ⭐ THIS FIXES DOTS IN DEPLOY
           slidesPerView={1}
           speed={700}
           autoplay={{ delay: 5000 }}
@@ -179,10 +189,9 @@ export default function GallerySlider({ data }) {
           onSlideChange={(swiper) => {
             const real = swiper.realIndex;
 
-            // ---------------- DOT SYNC ----------------
+            // DOT SYNC
             setActiveDot(real % 3);
 
-            // ---------------- INFO UPDATE ----------------
             const slide = data[real];
             if (slide) {
               setSlideInfo({
@@ -201,12 +210,10 @@ export default function GallerySlider({ data }) {
           ))}
         </Swiper>
 
-        {/* INFO */}
         <div className="gallery-slider__info" id="gallery-info">
           <h3>{slideInfo.title}</h3>
           <p>{slideInfo.text}</p>
 
-          {/* ---------------- DOTS ---------------- */}
           <div className="gallery-slider__dots">
             {[0, 1, 2].map((dotIndex) => (
               <button
@@ -215,11 +222,7 @@ export default function GallerySlider({ data }) {
                   "gallery-slider__dot" +
                   (dotIndex === activeDot ? " active" : "")
                 }
-                onClick={() => {
-                  const swiper =
-                    document.querySelector(".swiper-theme-light").swiper;
-                  goToDot(dotIndex, swiper);
-                }}
+                onClick={() => goToDot(dotIndex, swiperRef)} // ⭐ USE SAFE REF
               />
             ))}
           </div>
