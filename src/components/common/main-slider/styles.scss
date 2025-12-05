@@ -82,25 +82,31 @@
   display: none !important;
 }
 
-
-/* ⭐ YOUR CUSTOM DOTS */
-.main-slider__dots {
+.testimonials__dots {
+  margin-bottom: 28px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
-  margin-top: 15px;
   gap: 10px;
 }
 
-.main-slider__dot {
-  width: 12px;
-  height: 12px;
+.testimonials__dot {
+  width: 0.725rem;
+  height: 0.725rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid #043b3b;
   border-radius: 50%;
-  background: #ccc;
-  border: none;
   cursor: pointer;
-  transition: 0.25s;
+  transition: background 0.25s ease, transform 0.25s ease;
 
-  &.active {
-    background: #ff6f61;
+  &:hover {
+    transform: scale(1.15);
   }
+}
+
+.testimonials__dot--active {
+  background: #2e2e2d;
+  border: 1px solid #2e2e2d;
+  transform: scale(1.1);
 }
